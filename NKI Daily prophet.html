@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)file:///C:/Users/Real%20Video%20Studio/Downloads/daily_prophet.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Daily Prophet — Special Edition</title>
+<link href="./NKI Daily prophet_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f5e6c8;
+    --parchment-dark: #e8d4a0;
+    --ink: #1a1008;
+    --ink-mid: #2d1f0a;
+    --ink-light: #4a3520;
+    --red-accent: #8b1a1a;
+    --gold: #9a7c2a;
+    --gold-light: #c4a84f;
+    --shadow: rgba(26,16,8,0.4);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: #2c1f0a;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, #3d2910 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, #1a0f05 0%, transparent 50%);
+    min-height: 100vh;
+    padding: 30px 20px;
+    font-family: 'IM Fell English', serif;
+  }
+
+  /* ─── PAPER ─── */
+  .newspaper {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--parchment);
+    background-image:
+      linear-gradient(135deg, #fdf3d8 0%, #f0dba8 30%, #e8d090 60%, #f5e6c8 100%);
+    box-shadow:
+      0 0 0 2px #6b4c1e,
+      0 0 0 4px #9a7c2a,
+      0 0 0 6px #6b4c1e,
+      8px 8px 40px rgba(0,0,0,0.7),
+      -4px -4px 20px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* aged corners */
+  .newspaper::before {
+    content:'';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 0%   0%,   rgba(100,60,10,0.28) 0%, transparent 28%),
+      radial-gradient(circle at 100% 0%,   rgba(80,40,5,0.22)   0%, transparent 24%),
+      radial-gradient(circle at 0%   100%, rgba(80,40,5,0.22)   0%, transparent 24%),
+      radial-gradient(circle at 100% 100%, rgba(100,60,10,0.28) 0%, transparent 28%);
+    pointer-events: none; z-index: 10;
+  }
+
+  .inner { padding:30px 36px; position:relative; z-index:1; }
+
+  /* ─── MASTHEAD ─── */
+  .masthead { text-align:center; border-bottom:3px double var(--ink); padding-bottom:12px; margin-bottom:8px; }
+  .masthead-top { display:flex; justify-content:space-between; align-items:center; font-size:10px; color:var(--ink-light); font-family:'Playfair Display',serif; margin-bottom:6px; letter-spacing:1px; }
+  .paper-title { font-family:'UnifrakturMaguntia',cursive; font-size:clamp(42px,7vw,88px); color:var(--ink); line-height:1; letter-spacing:2px; animation:titleGlow 4s ease-in-out infinite alternate; }
+  @keyframes titleGlow {
+    from { text-shadow:2px 2px 0 var(--gold), 3px 3px 8px var(--shadow); }
+    to   { text-shadow:2px 2px 0 var(--gold-light), 3px 3px 20px rgba(154,124,42,0.5), 0 0 40px rgba(154,124,42,0.15); }
+  }
+  .masthead-subtitle { font-family:'Cinzel',serif; font-size:11px; letter-spacing:6px; color:var(--gold); margin:4px 0 6px; text-transform:uppercase; }
+  .masthead-motto { font-style:italic; font-size:12px; color:var(--ink-light); font-family:'IM Fell English',serif; }
+  .masthead-bar { display:flex; justify-content:space-between; font-size:10px; color:var(--ink-mid); font-family:'Playfair Display',serif; border-top:1px solid var(--gold); border-bottom:1px solid var(--gold); padding:4px 0; margin-top:8px; letter-spacing:0.5px; }
+
+  /* ─── TICKER ─── */
+  .ticker-wrap { background:var(--ink); color:var(--gold-light); font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px; overflow:hidden; padding:6px 0; margin-bottom:16px; position:relative; }
+  .ticker-label { position:absolute; left:0; top:0; bottom:0; background:var(--red-accent); color:#fff; padding:0 12px; display:flex; align-items:center; font-weight:700; letter-spacing:2px; z-index:2; white-space:nowrap; }
+  .ticker-content { display:inline-block; white-space:nowrap; animation:tickerScroll 42s linear infinite; padding-left:170px; }
+  @keyframes tickerScroll { 0%{transform:translateX(100vw);} 100%{transform:translateX(-100%);} }
+
+  /* ─── ORNAMENT ─── */
+  .ornament { text-align:center; font-size:18px; color:var(--gold); margin:8px 0; letter-spacing:8px; animation:shimmer 3s ease-in-out infinite; }
+  @keyframes shimmer { 0%,100%{opacity:0.7;} 50%{opacity:1;color:var(--gold-light);} }
+
+  /* ─── GRIDS ─── */
+  .grid-3    { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; }
+  .grid-2    { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+  .grid-hero { display:grid; grid-template-columns:1.8fr 1fr; gap:0; }
+  .grid-3col { display:grid; grid-template-columns:1fr 2fr 1fr; gap:0; }
+  .col { padding:14px 16px; }
+  .col + .col { border-left:1px solid var(--ink-light); }
+  .section-divider { border:none; border-top:3px double var(--ink); margin:14px 0; }
+  .thin-divider    { border:none; border-top:1px solid var(--ink-light); margin:10px 0; }
+
+  /* ─── SECTION LABEL ─── */
+  .section-label { font-family:'Cinzel',serif; font-size:8px; letter-spacing:4px; color:var(--red-accent); text-transform:uppercase; border-bottom:1px solid var(--red-accent); padding-bottom:2px; margin-bottom:8px; display:inline-block; }
+
+  /* ─── HEADLINES ─── */
+  h1.headline { font-family:'Playfair Display',serif; font-size:clamp(22px,3.5vw,34px); line-height:1.1; color:var(--ink); font-weight:900; margin-bottom:8px; }
+  h2.headline { font-family:'Playfair Display',serif; font-size:clamp(15px,2.5vw,22px); line-height:1.15; color:var(--ink); font-weight:700; margin-bottom:6px; }
+  h3.headline { font-family:'Playfair Display',serif; font-size:15px; line-height:1.2; color:var(--ink); font-weight:700; margin-bottom:5px; }
+  .byline { font-size:10px; font-family:'Cinzel',serif; color:var(--ink-light); letter-spacing:1px; margin-bottom:8px; }
+
+  p.body-text { font-family:'IM Fell English',serif; font-size:13px; line-height:1.65; color:var(--ink-mid); text-align:justify; hyphens:auto; }
+  p.body-text + p.body-text { margin-top:6px; }
+  p.body-text.dropcap::first-letter { float:left; font-family:'UnifrakturMaguntia',cursive; font-size:58px; line-height:0.7; margin:4px 6px 0 0; color:var(--ink); }
+
+  /* ═══════════════════════════════════════
+     MOVING PHOTO FRAMES
+     Harry Potter "animated newspaper" effect:
+     real photos + CSS Ken Burns pan & zoom
+  ═══════════════════════════════════════ */
+  .photo-frame {
+    width:100%; position:relative; overflow:hidden;
+    border:2px solid var(--ink-light);
+    box-shadow:inset 0 0 30px rgba(0,0,0,0.5), 3px 3px 0 var(--gold);
+    margin:10px 0; background:#0d0a06;
+  }
+
+  /* sepia + slight contrast for aged-photo look */
+  .photo-frame img {
+    width:100%; height:100%; object-fit:cover; display:block;
+    filter:sepia(30%) contrast(1.08) brightness(0.88) saturate(0.85);
+    transform-origin:center center;
+  }
+
+  /* 8 distinct pan+zoom paths */
+  .mv-a { animation:mvA 14s ease-in-out infinite alternate; }
+  .mv-b { animation:mvB 18s ease-in-out infinite alternate; }
+  .mv-c { animation:mvC 12s ease-in-out infinite alternate; }
+  .mv-d { animation:mvD 16s ease-in-out infinite alternate; }
+  .mv-e { animation:mvE 15s ease-in-out infinite alternate; }
+  .mv-f { animation:mvF 13s ease-in-out infinite alternate; }
+  .mv-g { animation:mvG 17s ease-in-out infinite alternate; }
+  .mv-h { animation:mvH 11s ease-in-out infinite alternate; }
+  .mv-i { animation:mvI 19s ease-in-out infinite alternate; }
+  .mv-j { animation:mvJ 20s ease-in-out infinite alternate; }
+
+  @keyframes mvA { from{transform:scale(1.00) translate( 0%,  0%);} to{transform:scale(1.18) translate(-5%, -4%);} }
+  @keyframes mvB { from{transform:scale(1.14) translate( 4%,  3%);} to{transform:scale(1.00) translate(-3%, -5%);} }
+  @keyframes mvC { from{transform:scale(1.00) translate(-4%,  3%);} to{transform:scale(1.20) translate( 5%, -3%);} }
+  @keyframes mvD { from{transform:scale(1.16) translate( 3%, -4%);} to{transform:scale(1.00) translate(-5%,  4%);} }
+  @keyframes mvE { from{transform:scale(1.00) translate( 5%,  4%);} to{transform:scale(1.14) translate(-4%, -5%);} }
+  @keyframes mvF { from{transform:scale(1.12) translate(-3%, -3%);} to{transform:scale(1.00) translate( 5%,  5%);} }
+  @keyframes mvG { from{transform:scale(1.00) translate( 3%, -5%);} to{transform:scale(1.16) translate(-5%,  3%);} }
+  @keyframes mvH { from{transform:scale(1.20) translate(-4%,  4%);} to{transform:scale(1.00) translate( 4%, -4%);} }
+  @keyframes mvI { from{transform:scale(1.00) translate( 6%,  2%);} to{transform:scale(1.15) translate(-4%, -6%);} }
+  @keyframes mvJ { from{transform:scale(1.13) translate(-5%, -2%);} to{transform:scale(1.00) translate( 5%,  5%);} }
+
+  /* parchment-warm vignette over every photo */
+  .photo-frame::after {
+    content:''; position:absolute; inset:0;
+    background:
+      linear-gradient(to bottom, rgba(245,230,200,0.04) 0%, rgba(26,16,8,0.28) 100%),
+      radial-gradient(ellipse at center, transparent 55%, rgba(26,16,8,0.35) 100%);
+    pointer-events:none; z-index:1;
+  }
+
+  .photo-caption {
+    position:absolute; bottom:0; left:0; right:0;
+    background:rgba(26,16,8,0.84); color:var(--parchment-dark);
+    font-family:'IM Fell English',serif; font-style:italic; font-size:10px;
+    padding:5px 9px; text-align:center; z-index:2;
+    border-top:1px solid var(--gold);
+  }
+
+  /* heights */
+  .h-xl   { height:280px; }
+  .h-tall { height:230px; }
+  .h-mid  { height:170px; }
+  .h-sm   { height:140px; }
+  .h-wide { height:200px; }
+
+  /* ─── PULL QUOTE ─── */
+  .pull-quote { border-left:4px solid var(--gold); border-right:4px solid var(--gold); padding:12px 16px; margin:12px 0; text-align:center; background:rgba(154,124,42,0.06); }
+  .pull-quote p { font-family:'Playfair Display',serif; font-style:italic; font-size:15px; color:var(--ink); line-height:1.4; }
+  .pull-quote cite { font-family:'Cinzel',serif; font-size:9px; letter-spacing:2px; color:var(--gold); display:block; margin-top:6px; }
+
+  /* ─── AD BOX ─── */
+  .ad-box { border:2px solid var(--ink); padding:12px; text-align:center; background:rgba(26,16,8,0.04); margin:12px 0; position:relative; }
+  .ad-box::before { content:'✦ Advertisement ✦'; position:absolute; top:-8px; left:50%; transform:translateX(-50%); background:var(--parchment); padding:0 6px; font-size:8px; letter-spacing:2px; color:var(--ink-light); font-family:'Cinzel',serif; }
+  .ad-box .ad-title { font-family:'UnifrakturMaguntia',cursive; font-size:22px; color:var(--red-accent); }
+  .ad-box p { font-size:11px; font-style:italic; color:var(--ink-mid); }
+
+  /* ─── SIDEBAR BOX ─── */
+  .sidebar-box { border:1px solid var(--ink); padding:10px; margin:10px 0; background:rgba(26,16,8,0.03); }
+  .sidebar-box h4 { font-family:'Cinzel',serif; font-size:10px; letter-spacing:2px; color:var(--ink); border-bottom:1px solid var(--ink-light); padding-bottom:4px; margin-bottom:8px; text-transform:uppercase; }
+  .sidebar-box ul { list-style:none; padding:0; }
+  .sidebar-box ul li { font-size:11px; color:var(--ink-mid); padding:3px 0; border-bottom:1px dotted var(--ink-light); font-family:'IM Fell English',serif; }
+  .sidebar-box ul li::before { content:'⚡ '; color:var(--gold); }
+
+  /* ─── TABLES ─── */
+  table { width:100%; border-collapse:collapse; font-size:11px; font-family:'IM Fell English',serif; margin:8px 0; }
+  th { background:var(--ink); color:var(--gold-light); font-family:'Cinzel',serif; font-size:9px; letter-spacing:1px; padding:5px 8px; text-align:left; }
+  td { padding:4px 8px; border-bottom:1px solid var(--parchment-dark); color:var(--ink-mid); }
+  tr:nth-child(even) td { background:rgba(26,16,8,0.04); }
+
+  /* ─── FOOTER ─── */
+  .footer { text-align:center; border-top:3px double var(--ink); padding-top:12px; margin-top:14px; }
+  .footer p { font-size:10px; color:var(--ink-light); font-style:italic; }
+
+  /* ─── ENTRANCE ─── */
+  @keyframes fadeSlide { from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
+  .inner > * { animation:fadeSlide 0.6s ease both; }
+  .inner > *:nth-child(1){animation-delay:0.05s;}
+  .inner > *:nth-child(2){animation-delay:0.15s;}
+  .inner > *:nth-child(3){animation-delay:0.25s;}
+  .inner > *:nth-child(4){animation-delay:0.35s;}
+  .inner > *:nth-child(5){animation-delay:0.45s;}
+  .inner > *:nth-child(6){animation-delay:0.55s;}
+
+  /* ─── RESPONSIVE ─── */
+  @media(max-width:768px){
+    .grid-3,.grid-2,.grid-hero,.grid-3col{grid-template-columns:1fr;}
+    .col+.col{border-left:none;border-top:1px solid var(--ink-light);}
+    .inner{padding:20px 18px;}
+    .paper-title{font-size:48px;}
+  }
+</style>
+</head>
+<body>
+<div class="newspaper">
+<div class="inner">
+
+  <!-- ══ MASTHEAD ══ -->
+  <header class="masthead">
+    <div class="masthead-top">
+      <span>SPECIAL ACADEMIC EDITION</span>
+      <span>THE WIZARDING WORLD'S FINEST SCHOLARLY PUBLICATION</span>
+      <span>ONE KNUT</span>
+    </div>
+    <div class="paper-title">The Daily Prophet</div>
+    <div class="masthead-subtitle">✦ &nbsp; Veritas &nbsp; Scientia &nbsp; Magica &nbsp; ✦</div>
+    <div class="masthead-motto">"Enlightening the Wizarding World Since 1743"</div>
+    <div class="masthead-bar">
+      <span>VOL. CCLXXIX · NO. 42</span>
+      <span>★ KNOWLEDGE IS THE GREATEST SPELL ★</span>
+      <span>MONDAY, 27 APRIL 2026</span>
+    </div>
+  </header>
+
+  <!-- ══ TICKER ══ -->
+  <div class="ticker-wrap">
+    <span class="ticker-label">⚡ BREAKING</span>
+    <span class="ticker-content">
+      MINISTRY CONFIRMS: Social media sites to be monitored for educational misuse &nbsp;•&nbsp;
+      PROFESSOR TRELAWNEY: Future of innovation to reshape wizarding society &nbsp;•&nbsp;
+      CROSS-CULTURAL SUMMIT at Hogwarts: Gestures cause diplomatic incident &nbsp;•&nbsp;
+      MADAM POMFREY speaks out against unregulated plastic surgery potions &nbsp;•&nbsp;
+      GMF (Genetically Modified Foods) spark major health controversy &nbsp;•&nbsp;
+      School uniform debate: British vs. Australian models clash at Ministry &nbsp;•&nbsp;
+      Old Witches' Home in Hogsmeade: overcrowded as population ages &nbsp;•&nbsp;
+      Newspaper readership in Uzbekistan drops — but not as fast as expected
+    </span>
+  </div>
+
+  <!-- ══ ROW 1: HERO + SIDEBAR ══ -->
+  <div class="grid-hero">
+
+    <!-- HERO -->
+    <div class="col">
+      <span class="section-label">Society &amp; Education</span>
+      <h1 class="headline">Social Networks: Powerful Tools or Dangerous Traps for the Young Scholar?</h1>
+      <div class="byline">By Bartholomew Quillsworth, Staff Correspondent</div>
+
+      <!-- MOVING PHOTO 1: people on phones/laptops -->
+      <div class="photo-frame h-tall">
+        <img src="./NKI Daily prophet_files/photo-1522202176988-66273c2fd55f" alt="Students working together with laptops" class="mv-a">
+        <div class="photo-caption">Young scholars consult the Enchanted Web — photograph perpetually in motion, per wizarding tradition</div>
+      </div>
+
+      <p class="body-text dropcap">In an age where even house-elves carry enchanted scrolls, the question of how to harness social networking sites for educational benefit has never been more pressing. Our correspondent has identified seventeen platforms deemed acceptable by the Hogwarts Board of Governors, including <em>ScholarParchment</em>, <em>ResearchCauldron</em>, and the ever-popular <em>WikiWizard</em>.</p>
+
+      <p class="body-text">Professors urge students to look beyond entertainment. "Finding and collecting reliable sites requires critical thinking," said Professor McGonagall. "Not every scroll floating through the Wizarding Web deserves your trust." Experts recommend cross-referencing at least three sources before citing any material in academic work.</p>
+
+      <div class="pull-quote">
+        <p>"The Wizarding Web holds more knowledge than all libraries of Hogwarts combined — if only students would look in the right corners."</p>
+        <cite>— Headmistress M. McGonagall</cite>
+      </div>
+
+      <hr class="thin-divider">
+
+      <span class="section-label">Future of the World</span>
+      <h2 class="headline">Innovating Tomorrow: Scholars Predict a World Transformed by Invention</h2>
+      <div class="byline">By Cassiopeia Fleet, Science &amp; Prophecy Editor</div>
+
+      <!-- MOVING PHOTO 2: engineer / inventor / lab -->
+      <div class="photo-frame h-mid">
+        <img src="./NKI Daily prophet_files/photo-1581091226825-a6a2a5aee158" alt="Woman scientist working in laboratory" class="mv-b">
+        <div class="photo-caption">An inventor demonstrates her solar-powered enchantment device at the International Conference on Magical Innovation</div>
+      </div>
+
+      <p class="body-text">At the International Conference on Magical Innovation, scholars from seventeen nations presented their boldest predictions. Flying carriages powered by solar enchantments, thought-to-text quills, and AI-assisted Sorting Hats were among the inventions showcased. "The future is not to be feared, but to be fashioned," declared inventor Phineas Golightly.</p>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="col">
+      <div class="sidebar-box">
+        <h4>✦ Today's Contents</h4>
+        <ul>
+          <li>Social Networking &amp; Education</li>
+          <li>Future of Innovation</li>
+          <li>Cross-Cultural Communication</li>
+          <li>Mass Media &amp; Television</li>
+          <li>Plastic Surgery Ethics</li>
+          <li>School Uniforms Worldwide</li>
+          <li>Law-Breaking Across Nations</li>
+          <li>Reading Habits in Uzbekistan</li>
+          <li>Old People's Homes in Europe</li>
+          <li>GMF: A Hidden Danger?</li>
+        </ul>
+      </div>
+
+      <!-- MOVING PHOTO 3: mystical / prophecy -->
+      <div class="photo-frame h-mid">
+        <img src="./NKI Daily prophet_files/photo-1507003211169-0a1dd7228f2d" alt="Person looking thoughtfully at horizon" class="mv-c">
+        <div class="photo-caption">Professor Trelawney's latest vision: "Innovation shall reshape all."</div>
+      </div>
+
+      <div class="ad-box">
+        <div class="ad-title">Madam Malkin's</div>
+        <p>🎩 School Uniforms from Every Nation<br><em>Tailored by magic, delivered by owl</em></p>
+        <p style="font-size:9px;margin-top:6px;color:var(--red-accent);">◆ EST. 1423 · DIAGON ALLEY ◆</p>
+      </div>
+
+      <div class="sidebar-box">
+        <h4>🌍 Global Digital Facts</h4>
+        <ul>
+          <li>4.9 billion internet users worldwide</li>
+          <li>68% use social media daily</li>
+          <li>Only 12% verify sources before sharing</li>
+          <li>Education apps: fastest growing sector</li>
+          <li>Uzbekistan internet growth: +340% since 2010</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+  <div class="ornament">✦ ⚡ ✦ ⚡ ✦ ⚡ ✦</div>
+  <hr class="section-divider">
+
+  <!-- ══ ROW 2: THREE COLUMNS ══ -->
+  <div class="grid-3">
+
+    <!-- Cross-Cultural Communication -->
+    <div class="col">
+      <span class="section-label">Culture &amp; Language</span>
+      <h2 class="headline">When a Thumbs-Up Can Cause a War: Decoding Non-Verbal Communication</h2>
+      <div class="byline">By Lavinia Moonwhisper, Cultural Affairs</div>
+
+      <!-- MOVING PHOTO 4: diverse group of people interacting -->
+      <div class="photo-frame h-mid">
+        <img src="./NKI Daily prophet_files/photo-1529156069898-49953e39b3ac" alt="Diverse group of young people laughing together" class="mv-d">
+        <div class="photo-caption">Delegates from six nations attempt a handshake — gestures misfire beautifully</div>
+      </div>
+
+      <p class="body-text dropcap">Cross-cultural communication is an art as complex as Legilimency. A gesture polite in England may be deeply offensive in Japan; direct eye contact, celebrated in the West, signals disrespect in many Eastern traditions. At last week's summit, a Bulgarian delegate caused a minor crisis by nodding — which in Bulgaria means <em>no</em>.</p>
+
+      <p class="body-text">Researchers classify cultures on axes of <em>high-context</em> vs <em>low-context</em> communication — a distinction as meaningful as the difference between a Hufflepuff and a Slytherin.</p>
+
+      <table>
+        <tbody><tr><th>Culture</th><th>Style</th></tr>
+        <tr><td>British</td><td>Indirect, understatement</td></tr>
+        <tr><td>Uzbek</td><td>Formal, respectful</td></tr>
+        <tr><td>American</td><td>Direct, expressive</td></tr>
+        <tr><td>Japanese</td><td>High-context, silent cues</td></tr>
+      </tbody></table>
+    </div>
+
+    <!-- Mass Media -->
+    <div class="col">
+      <span class="section-label">Mass Media</span>
+      <h2 class="headline">East Meets West on Screen: How Uzbek &amp; Russian Viewers See British Television</h2>
+      <div class="byline">By Reginald Inksworth, Media Correspondent</div>
+
+      <p class="body-text dropcap">When the BBC's beloved series <em>Sherlock</em> aired across Uzbekistan and Russia, viewers brought their own cultural lens. British audiences cheered Holmes's rationalism; Eastern audiences were drawn to themes of loyalty, brotherhood, and honour — values that resonate deeply in collectivist societies.</p>
+
+      <!-- MOVING PHOTO 5: person watching TV / media -->
+      <div class="photo-frame h-mid">
+        <img src="./NKI Daily prophet_files/photo-1593784991095-a205069470b6" alt="Person watching television at home" class="mv-e">
+        <div class="photo-caption">A viewer in Tashkent compares two broadcasts — cultural lenses diverge dramatically</div>
+      </div>
+
+      <div class="pull-quote">
+        <p>"The same programme; two entirely different stories received."</p>
+        <cite>— Media Studies Research, Tashkent Academy</cite>
+      </div>
+
+      <p class="body-text">American shows prioritise individual triumph; Uzbek productions emphasise family honour and community. Presenters should compare specific moments: humour, conflict, and resolution from each culture, side by side.</p>
+    </div>
+
+    <!-- Plastic Surgery Ethics -->
+    <div class="col">
+      <span class="section-label">Ethics in Medicine</span>
+      <h2 class="headline">The Price of Perfection: Ethical Issues Surrounding Plastic Surgery</h2>
+      <div class="byline">By Madam H. Pomfrey, Medical Ethics Board</div>
+
+      <!-- MOVING PHOTO 6: doctor / medical professional -->
+      <div class="photo-frame h-mid">
+        <img src="./NKI Daily prophet_files/photo-1559839734-2b71ea197ec2" alt="Medical professional doctor in clinic" class="mv-f">
+        <div class="photo-caption">Madam Pomfrey reviews cosmetic procedure cases in the Hospital Wing — photograph in perpetual motion</div>
+      </div>
+
+      <p class="body-text dropcap">Every year, millions undergo plastic surgery — some to repair, some to transform. Ethical medicine demands we ask: where does healing end and harm begin? Madam Pomfrey, who has reversed more botched beautification spells than any mediwitch alive, warns against procedures driven by social pressure alone.</p>
+
+      <p class="body-text">Consequences include complications, psychological distress, financial ruin, and permanent alteration of identity. Yet reconstructive surgery for burns and illness saves lives daily.</p>
+
+      <table>
+        <tbody><tr><th>Outcome</th><th>% Reported</th></tr>
+        <tr><td>Satisfied</td><td>61%</td></tr>
+        <tr><td>Mild regret</td><td>22%</td></tr>
+        <tr><td>Complications</td><td>11%</td></tr>
+        <tr><td>Severe regret</td><td>6%</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+  <div class="ornament">✦ · · · ✦ · · · ✦</div>
+  <hr class="section-divider">
+
+  <!-- ══ ROW 3: THREE COLUMNS ══ -->
+  <div class="grid-3col">
+
+    <!-- LEFT: Law -->
+    <div class="col">
+      <span class="section-label">Law &amp; Society</span>
+      <h3 class="headline">Breaking the Law: Penalties Compared Across Nations</h3>
+      <div class="byline">By A. Shacklebolt, Legal Affairs</div>
+
+      <!-- MOVING PHOTO 7: courtroom / justice -->
+      <div class="photo-frame h-mid">
+        <img src="./NKI Daily prophet_files/photo-1589829545856-d10d557cf95f" alt="Lawyer in courtroom with gavel" class="mv-g">
+        <div class="photo-caption">Aurors review cross-national penal codes in the Ministry of Magic Archives</div>
+      </div>
+
+      <table>
+        <tbody><tr><th>Offence</th><th>Country</th><th>Penalty</th></tr>
+        <tr><td>Gum chewing</td><td>Singapore</td><td>Fine / ban</td></tr>
+        <tr><td>Speeding</td><td>Finland</td><td>% of salary</td></tr>
+        <tr><td>Graffiti</td><td>USA</td><td>Community service</td></tr>
+        <tr><td>Bribery</td><td>Uzbekistan</td><td>Imprisonment</td></tr>
+        <tr><td>Tax evasion</td><td>Germany</td><td>Prison + fine</td></tr>
+      </tbody></table>
+
+      <p class="body-text">Income-scaled fines, used in Scandinavia, are more just than fixed amounts that penalise the poor disproportionately.</p>
+
+      <hr class="thin-divider">
+
+      <div class="ad-box">
+        <div class="ad-title">Flourish &amp; Blotts</div>
+        <p>📚 Academic Scrolls &amp; Muggle Journals<br><em>"Every fact, sourced and verified"</em></p>
+        <p style="font-size:9px;margin-top:4px;color:var(--gold);">Free owl delivery on orders over 5 Galleons</p>
+      </div>
+    </div>
+
+    <!-- CENTRE: School Uniforms -->
+    <div class="col" style="border-left:1px solid var(--ink-light);border-right:1px solid var(--ink-light);">
+      <span class="section-label">Education</span>
+      <h1 class="headline" style="font-size:clamp(20px,3vw,30px);">Dressed to Learn: A World Tour of School Uniforms</h1>
+      <div class="byline">By Penelope Clearwater, Education Correspondent</div>
+
+      <!-- MOVING PHOTO 8: students in classroom -->
+      <div class="photo-frame h-wide">
+        <img src="./NKI Daily prophet_files/photo-1580582932707-520aed937b7b" alt="Students in classroom wearing uniforms" class="mv-h">
+        <div class="photo-caption">Students from English-speaking nations — enchanted image, seasonal variations visible in perpetual motion</div>
+      </div>
+
+      <p class="body-text dropcap">From the grey blazers of English grammar schools to the crisp polo shirts of Australian academies, school uniforms tell the story of a nation's values. Britain insists on formality; Australia favours practical comfort; Canada blends both.</p>
+
+      <p class="body-text">In the United States, most public schools have no uniform requirement — a reflection of individualism embedded in American culture. Yet studies suggest uniform policies reduce social hierarchies and improve focus.</p>
+
+      <div class="grid-2" style="margin:10px 0;">
+        <div style="padding:8px;border:1px solid var(--ink-light);">
+          <strong style="font-family:&#39;Cinzel&#39;,serif;font-size:9px;letter-spacing:1px;">🇬🇧 UNITED KINGDOM</strong>
+          <p class="body-text" style="font-size:11px;margin-top:4px;">Blazer, tie, white shirt, black trousers or skirt. Strict codes enforced. House colours matter enormously.</p>
+        </div>
+        <div style="padding:8px;border:1px solid var(--ink-light);border-left:none;">
+          <strong style="font-family:&#39;Cinzel&#39;,serif;font-size:9px;letter-spacing:1px;">🇦🇺 AUSTRALIA</strong>
+          <p class="body-text" style="font-size:11px;margin-top:4px;">Polo shirt and shorts/skirt in school colours. Sun protection built in. Far less formal than British.</p>
+        </div>
+        <div style="padding:8px;border:1px solid var(--ink-light);border-top:none;">
+          <strong style="font-family:&#39;Cinzel&#39;,serif;font-size:9px;letter-spacing:1px;">🇺🇸 USA</strong>
+          <p class="body-text" style="font-size:11px;margin-top:4px;">Largely absent in public schools. Dress codes more common than full uniforms in most states.</p>
+        </div>
+        <div style="padding:8px;border:1px solid var(--ink-light);border-top:none;border-left:none;">
+          <strong style="font-family:&#39;Cinzel&#39;,serif;font-size:9px;letter-spacing:1px;">🇳🇿 NEW ZEALAND</strong>
+          <p class="body-text" style="font-size:11px;margin-top:4px;">Blazers and ties standard. Māori cultural elements increasingly woven into uniform design.</p>
+        </div>
+      </div>
+
+      <p class="body-text">Our reporters recommend students choose one English-speaking nation's uniform tradition and illustrate it with visual examples — the impact on identity and belonging makes for compelling analysis.</p>
+    </div>
+
+    <!-- RIGHT: Newspapers + Old People -->
+    <div class="col">
+      <span class="section-label">Media Habits</span>
+      <h3 class="headline">Do Uzbeks Still Read Newspapers? The Surprising Truth</h3>
+      <div class="byline">By Rustam Al-Inky, Tashkent Bureau</div>
+
+      <!-- MOVING PHOTO 9: person reading newspaper -->
+      <div class="photo-frame h-sm">
+        <img src="./NKI Daily prophet_files/photo-1504711434969-e33886168f5c" alt="Man reading newspaper at cafe" class="mv-i">
+        <div class="photo-caption">A reader in Tashkent peruses the morning edition — enchanted lens captures his every expression</div>
+      </div>
+
+      <table>
+        <tbody><tr><th>Format</th><th>Readers</th></tr>
+        <tr><td>TV news</td><td>81%</td></tr>
+        <tr><td>Online news</td><td>72%</td></tr>
+        <tr><td>Social media</td><td>65%</td></tr>
+        <tr><td>Print newspapers</td><td>28%</td></tr>
+        <tr><td>Radio</td><td>14%</td></tr>
+      </tbody></table>
+
+      <p class="body-text">Older generations value print; youth gravitate toward Telegram and YouTube. Students should gather their own survey data from classmates to enrich findings with primary research.</p>
+
+      <hr class="thin-divider">
+
+      <span class="section-label">Social Issues</span>
+      <h3 class="headline">Europe's Ageing Crisis: Old People's Homes — A Solution or a Sorrow?</h3>
+      <div class="byline">By Griselda Longbottom, Social Affairs</div>
+
+      <!-- MOVING PHOTO 10: elderly people -->
+      <div class="photo-frame h-sm">
+        <img src="./NKI Daily prophet_files/photo-1576765608535-5f04d1e3f289" alt="Elderly woman smiling warmly" class="mv-j">
+        <div class="photo-caption">Residents of a European care home — enchanted photograph, gently in motion</div>
+      </div>
+
+      <p class="body-text">As Europe's population ages, care homes have become both a social necessity and a cultural flashpoint. Cultures like Uzbekistan's, where family care of elders is a moral duty, view European care homes with profound unease.</p>
+
+      <div class="sidebar-box">
+        <h4>📊 Care Home Facts (Europe)</h4>
+        <ul>
+          <li>3.7 million in care homes across EU</li>
+          <li>Average age of entry: 82 years</li>
+          <li>Scandinavia: highest quality standards</li>
+          <li>Staff shortage in 18 of 27 EU states</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+  <div class="ornament">✦ ⚗ ✦ ⚗ ✦ ⚗ ✦</div>
+  <hr class="section-divider">
+
+  <!-- ══ ROW 4: GMF FEATURE ══ -->
+  <div class="grid-hero">
+    <div class="col">
+      <span class="section-label">Ethics &amp; Science</span>
+      <h1 class="headline">GMF: Miracle of Modern Science — or Poison on the Plate?</h1>
+      <div class="byline">By Professor Sprout &amp; N. Longbottom, Herbology &amp; Food Science Desk</div>
+
+      <!-- MOVING PHOTO 11: scientist / crops / lab food -->
+      <div class="photo-frame" style="height:200px;">
+        <img src="./NKI Daily prophet_files/photo-1416879595882-3373a0480b5b" alt="Scientist examining plants in greenhouse" class="mv-a">
+        <div class="photo-caption">Hogwarts Greenhouse 7: Professor Sprout examines modified specimens — image perpetually in motion</div>
+      </div>
+
+      <p class="body-text dropcap">Genetically Modified Foods sit at the crossroads of science, ethics, and public health. Proponents celebrate their role in feeding a growing global population; opponents warn of untested long-term consequences on human health and biodiversity. "We are playing God with nature," warned Professor Sprout at last month's Agricultural Ethics Symposium.</p>
+
+      <p class="body-text">Risks include allergic reactions from novel proteins, ecological disruption through cross-pollination, and the socioeconomic hazard of corporate monopoly over the food supply. Yet GMFs have also reduced pesticide use by 37% and fortified crops with vitamins unavailable in wild varieties. Golden Rice has prevented blindness in thousands of children across developing nations.</p>
+
+      <div class="pull-quote">
+        <p>"The question is not whether we <em>can</em> modify what grows on our plate — it is whether we have truly considered what we <em>ought</em> to do."</p>
+        <cite>— Ministry of Magical Agriculture, Annual Report 2026</cite>
+      </div>
+    </div>
+
+    <div class="col">
+      <!-- MOVING PHOTO 12: laboratory research -->
+      <div class="photo-frame h-mid">
+        <img src="./NKI Daily prophet_files/photo-1530836369250-ef72a3f5cda8" alt="Scientists working in research laboratory" class="mv-d">
+        <div class="photo-caption">Research team at the Wizarding Institute of Nutritional Studies — perpetually in motion</div>
+      </div>
+
+      <div class="sidebar-box" style="margin-bottom:10px;">
+        <h4>⚖️ Arguments For GMF</h4>
+        <ul>
+          <li>Increased crop yields globally</li>
+          <li>Drought &amp; pest resistance</li>
+          <li>Nutritional enhancement (Golden Rice)</li>
+          <li>Reduced pesticide use by 37%</li>
+          <li>Potential to fight world hunger</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h4>⚠️ Arguments Against GMF</h4>
+        <ul>
+          <li>Unknown long-term health effects</li>
+          <li>Biodiversity loss risks</li>
+          <li>Corporate monopoly on seeds</li>
+          <li>Cross-contamination of wild species</li>
+          <li>Labelling gaps: consumer right to know</li>
+        </ul>
+      </div>
+
+      <p class="body-text" style="font-size:11px;font-style:italic;margin-top:10px;">Students presenting on this topic are encouraged to conduct a classroom debate — assigning pro- and anti-GMF positions — before delivering their final presentation to the faculty panel.</p>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+  <div class="ornament">✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦</div>
+  <hr class="section-divider">
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="ornament" style="font-size:14px;margin-bottom:8px;">⚡ &nbsp; THE DAILY PROPHET &nbsp; ⚡</div>
+    <p>Published by Wizarding Press Ltd. · Diagon Alley, London · Established 1743</p>
+    <p style="margin-top:4px;">All articles correspond to 4th semester academic topics · Total academic hours: 120</p>
+    <p style="margin-top:6px;color:var(--gold);font-family:&#39;Cinzel&#39;,serif;font-size:9px;letter-spacing:3px;">PRINTED ON SELF-UPDATING ENCHANTED PARCHMENT · ALL PHOTOGRAPHS PERPETUALLY IN MOTION</p>
+  </footer>
+
+</div>
+</div>
+
+
+</body></html>
